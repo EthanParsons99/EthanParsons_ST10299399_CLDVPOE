@@ -13,8 +13,12 @@ namespace st10299399POE.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int userID)
         {
+            List<productTable> products = productTable.GetAllProducts();
+
+            ViewData["Products"] = products;
+            ViewData["UserID"] = userID;
             return View();
         }
 
@@ -31,6 +35,17 @@ namespace st10299399POE.Controllers
         public IActionResult ContactUs()
         {
             return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult SignUp()
+        {
+            // Redirect to the signup page
+            return RedirectToAction("SignUp", "SignUp");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

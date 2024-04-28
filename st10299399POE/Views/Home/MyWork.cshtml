@@ -1,4 +1,4 @@
-﻿
+﻿@model st10299399POE.Models.productTable
 @{
     ViewData["Title"] = "MyWork";
 }
@@ -90,5 +90,15 @@
         </div>
     </div>
     </div>
+</body>
 
+<body>
+    <form asp-controller="Product" asp-action="MyWork" method="post">
+        <p>Insert new products</p>
+        <input type="text" name="Name" placeholder="Name" required>
+        <input type="text" name="Price" placeholder="Price" required>
+        <input type="text" name="Category" placeholder="Category" required>
+        <input type="text" name="Availability" placeholder="Availability" required>
+        <button type="submit">Submit</button>
+    </form>
 </body>
