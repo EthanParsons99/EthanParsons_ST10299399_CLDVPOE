@@ -8,10 +8,10 @@ namespace st10299399POE.Controllers
         public userTable usrtbl = new userTable();
 
         [HttpPost]
-        public ActionResult About(userTable Users)
+        public ActionResult SignUpForm(userTable Users)
         {
             var result = usrtbl.insert_User(Users);
-            return RedirectToAction("Privacy", "Home");
+            return RedirectToAction("ShowLoginForm", "Home");
         }
 
         [HttpGet]

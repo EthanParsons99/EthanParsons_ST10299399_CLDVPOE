@@ -13,17 +13,17 @@ namespace st10299399POE.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int userID)
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult MyWork(int userID)
         {
             List<productTable> products = productTable.GetAllProducts();
 
             ViewData["Products"] = products;
             ViewData["UserID"] = userID;
-            return View();
-        }
-
-        public IActionResult MyWork()
-        {
             return View();
         }
 
@@ -42,10 +42,14 @@ namespace st10299399POE.Controllers
             return View();
         }
 
-        public IActionResult SignUp()
+        public IActionResult ShowLoginForm()
         {
-            // Redirect to the signup page
-            return RedirectToAction("SignUp", "SignUp");
+            return View("LoginForm");
+        }
+
+        public IActionResult ShowSignupForm()
+        {
+            return View("SignupForm");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

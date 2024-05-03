@@ -1,8 +1,6 @@
 ﻿@model int
 @{
     ViewData["Title"] = "Home Page";
-    var userID = ViewData["userID"];
-    var products = ViewData["Products"] as List<st10299399POE.Models.productTable>;
 }
 
 <style>
@@ -13,53 +11,13 @@
         background-repeat: no-repeat;
     } 
 </style>
-
-@if (userID != null)
-{
-    <p>User ID: @userID</p>
-}
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            @* <h2>All Products</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                        <th>Availability</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var product in products)
-                    {
-                        <tr>
-                            <td>@product.Name</td>
-                            <td>@product.Price</td>
-                            <td>@product.Category</td>
-                            <td>@product.Availability</td>
-                            <td>
-                                <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
-                                    <input type="hidden" name="userID" value="@userID" />
-                                    <input type="hidden" name="productID" value="@product.ProductID" />
-                                    <button type="submit">Place Order</button>
-                                </form>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table> *@
-        </div>
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Login or Sign Up</h5>
                     <p class="card-text">Please login or sign up to access more features.</p>
-                    <a href="/LoginPage" class="btn btn-primary">Login</a>
-                    <a href="/SignUp" class="btn btn-secondary">Sign Up</a>
+                    <a href="@Url.Action("ShowLoginForm", "Home")" class="btn btn-primary">Login</a>
+                    <a href="@Url.Action("ShowSignUpForm", "Home")" class="btn btn-secondary">Sign Up</a>
                 </div>
             </div>
         </div>

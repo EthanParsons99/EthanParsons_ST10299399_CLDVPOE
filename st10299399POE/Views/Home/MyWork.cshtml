@@ -1,6 +1,9 @@
-﻿@model st10299399POE.Models.productTable
+﻿@model int 
+@* @model st10299399POE.Models.productTable; *@
 @{
     ViewData["Title"] = "MyWork";
+    var userID = ViewData["UserID"];
+    var products = ViewData["Products"] as List<st10299399POE.Models.productTable>;
 }
 
 <h1>MyWork</h1>
@@ -19,78 +22,117 @@
         }
 
     </style>
-
-<body>
-    <div class="container-wrapper">
-    <div style="border-style:solid; border-color:black; border-width:3px;">
-    <div class ="image-container">
+@* <body>
+        <div class="container-wrapper">
+        <div style="border-style:solid; border-color:black; border-width:3px;">
+        <div class ="image-container">
         <img src="/images/P1.webp" width="400" height="300" />
-        <p> 
-            Autum Leafs Canvas Painting <br />
-            By: Sonja Bruwer<br />
-            Price: R5600
+        <p>
+        Autum Leafs Canvas Painting <br />
+        By: Sonja Bruwer<br />
+        Price: R5600
         </p>
-    </div>
-    </div>
-    <div class="image-container">
-    <div style="border-style:solid; border-color:black; border-width:3px;">
+        </div>
+        </div>
+        <div class="image-container">
+        <div style="border-style:solid; border-color:black; border-width:3px;">
         <img src="/images/P2.webp" width="400" height="300" />
         <p>
-            Peacock Canvas Painting <br />
-            By: Alexandra Kramer<br />
-            Price: R4000
+        Peacock Canvas Painting <br />
+        By: Alexandra Kramer<br />
+        Price: R4000
         </p>
-    </div>
-    </div>
-    </div>
+        </div>
+        </div>
+        </div>
 
-    <div class="container-wrapper">
+        <div class="container-wrapper">
         <div style="border-style:solid; border-color:black; border-width:3px;">
         <div class="image-container">
-            <img src="/images/P3.jpg" width="400" height="300" />
-            <p>
-                Clay Cooking Pots <br />
-                By: Sisile Mbeke <br />
-                Price: R300
-            </p>
+        <img src="/images/P3.jpg" width="400" height="300" />
+        <p>
+        Clay Cooking Pots <br />
+        By: Sisile Mbeke <br />
+        Price: R300
+        </p>
         </div>
         </div>
         <div class="image-container">
-            <div style="border-style:solid; border-color:black; border-width:3px;">
-            <img src="/images/P5.jpeg" width="400" height="300" />
-            <p>
-                Handmade Coffee Mugs <br />
-                By: Dembe Buvuma <br />
-                Price: R60 <br />
-                Special: R100 for 2
-            </p>
-        </div>
-        </div>
-    </div>
-
-    <div class="container-wrapper">
         <div style="border-style:solid; border-color:black; border-width:3px;">
-            <div class="image-container">
-                <img src="/images/p7.webp" width="400" height="300" />
-                <p>
-                    Sea Braclets and Necklaces <br />
-                    By: Oscar Piastri <br />
-                    Price: R150
-                </p>
-            </div>
+        <img src="/images/P5.jpeg" width="400" height="300" />
+        <p>
+        Handmade Coffee Mugs <br />
+        By: Dembe Buvuma <br />
+        Price: R60 <br />
+        Special: R100 for 2
+        </p>
+        </div>
+        </div>
+        </div>
+
+        <div class="container-wrapper">
+        <div style="border-style:solid; border-color:black; border-width:3px;">
+        <div class="image-container">
+        <img src="/images/p7.webp" width="400" height="300" />
+        <p>
+        Sea Braclets and Necklaces <br />
+        By: Oscar Piastri <br />
+        Price: R150
+        </p>
+        </div>
         </div>
         <div class="image-container">
-            <div style="border-style:solid; border-color:black; border-width:3px;">
-            <img src="/images/p6.webp" width="400" height="300" />
-            <p>
-                Crystal Necklaces <br />
-                By: Oscar Piastri <br />
-                Price: R100
-            </p>
+        <div style="border-style:solid; border-color:black; border-width:3px;">
+        <img src="/images/p6.webp" width="400" height="300" />
+        <p>
+        Crystal Necklaces <br />
+        By: Oscar Piastri <br />
+        Price: R100
+        </p>
         </div>
-    </div>
-    </div>
-</body>
+        </div>
+        </div>
+        </body> *@
+
+@if (userID != null)
+{
+    <p>User ID: @userID</p>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h2>All Products</h2>
+            <table class="table">
+            <thead>
+            <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Availability</th>
+            <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var product in products)
+            {
+            <tr>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+            <td>@product.Category</td>
+            <td>@product.Availability</td>
+            <td>
+            <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
+            <input type="hidden" name="userID" value="@userID" />
+            <input type="hidden" name="productID" value="@product.ProductID" />
+            <button type="submit">Place Order</button>
+            </form>
+            </td>
+            </tr>
+            }
+            </tbody>
+            </table>
+        </div>
 
 <body>
     <form asp-controller="Product" asp-action="MyWork" method="post">
@@ -102,3 +144,4 @@
         <button type="submit">Submit</button>
     </form>
 </body>
+
