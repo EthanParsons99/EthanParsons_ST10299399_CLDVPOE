@@ -10,7 +10,7 @@ namespace st10299399POE.Models
 
         public int SelectUser(string email, string name)
         {
-            int userId = -1; // Default value if user is not found
+            int userId = -1; 
             using (SqlConnection con = new SqlConnection(con_string))
             {
                 string sql = "SELECT userID FROM userTable WHERE userEmail = @Email AND userName = @Name";
@@ -28,8 +28,6 @@ namespace st10299399POE.Models
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception or handle it appropriately
-                    // For now, rethrow the exception
                     throw ex;
                 }
             }

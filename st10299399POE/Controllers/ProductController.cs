@@ -11,7 +11,7 @@ namespace st10299399POE.Controllers
         public ActionResult MyWork(productTable products)
         {
             var result2 = prodtbl.insert_Product(products);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MyWork", "Home");
         }
 
         [HttpGet]

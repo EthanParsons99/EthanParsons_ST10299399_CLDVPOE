@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Login Failed";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                Login failed. Please try again.
+                <ul>
+                    <li>Make sure that you have signed up first.</li>
+                    <li>Make sure that you entered your name and email correctly.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+

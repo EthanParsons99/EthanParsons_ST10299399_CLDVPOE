@@ -1,14 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+<style>
+    body {
+        background-image: url('/images/bg4.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    form {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+    }
+</style>
+
 <body>
-    <form asp-controller="User" asp-action="SignUpForm" method="post">
-        <p> Sign Up</p>
-        <input type="text" name="Name" placeholder="Name" required />
-        <input type="text" name="Surname" placeholder="Surname" required />
-        <input type="text" name="Email" placeholder="example@gmail.com" required />
-        <button type="submit"> Submit</button>
-    </form>
+    <div class="form-container">
+        <form asp-controller="User" asp-action="SignUpForm" method="post" style="text-align:center">
+            <p> Sign Up</p>
+            <input type="text" name="Name" placeholder="Name" required>
+            <input type="text" name="Surname" placeholder="Surname" required>
+            <input type="text" name="Email" placeholder="example@gmail.com" required>
+            <button type="submit"> Submit</button>
+        </form>
+    </div>
 </body>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Order Failed";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                Order failed. Please try again.
+                <ul>
+                    <li>PLease make sure that you have logged in !</li>
+                    <li>If the issue is still happening please contact us for support.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="@Url.Action("MyWork", "Home")" class="btn btn-primary">Back to products</a>
+        </div>
+    </div>
+</div>

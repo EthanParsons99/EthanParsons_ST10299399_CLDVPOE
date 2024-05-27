@@ -20,8 +20,7 @@
         {
             text-align: center;
         }
-
-    </style>
+</style>
 @* <body>
         <div class="container-wrapper">
         <div style="border-style:solid; border-color:black; border-width:3px;">
@@ -97,6 +96,7 @@
 @if (userID != null)
 {
     <p>User ID: @userID</p>
+    <a href="@Url.Action("ViewOrders", "Home", new { userID = userID})" class="btn btn-primary">View Orders</a>
 }
 
 <div class="container">
@@ -133,15 +133,28 @@
             </tbody>
             </table>
         </div>
+        </div>
+        </div>
 
-<body>
-    <form asp-controller="Product" asp-action="MyWork" method="post">
-        <p>Insert new products</p>
-        <input type="text" name="Name" placeholder="Name" required>
-        <input type="text" name="Price" placeholder="Price" required>
-        <input type="text" name="Category" placeholder="Category" required>
-        <input type="text" name="Availability" placeholder="Availability" required>
-        <button type="submit">Submit</button>
-    </form>
-</body>
+
+@if (userID != null)
+        {
+            <body>
+                <form asp-controller="Product" asp-action="MyWork" method="post">
+                    <h2>Insert new products</h2>
+                    <input type="text" name="Name" placeholder="Name" required>
+                    <input type="text" name="Price" placeholder="Price" required>
+                    <input type="text" name="Category" placeholder="Category" required>
+@*                     <input type="text" name="Availability" placeholder="Availability: True/False" required> *@
+
+                    <label for="Availability">Availability</label>
+                    <select name="Availability">
+                        <option value="1">In stock</option>
+                        <option value="0">Out of stock</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </body>
+        }
+
 

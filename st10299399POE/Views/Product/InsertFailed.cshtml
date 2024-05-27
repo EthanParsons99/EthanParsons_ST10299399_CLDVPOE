@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Product Insert Failed";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                Product insertion failed. Please try again.
+                <ul>
+                    <li>Ensure all required fields are filled out correctly.</li>
+                    <li>Check for any special character or format errors in the input fields.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="@Url.Action("MyWork", "Home")" class="btn btn-primary">Back to Insert Product</a>
+        </div>
+    </div>
+</div>
